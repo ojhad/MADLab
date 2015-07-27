@@ -13,6 +13,7 @@
 		BCEB58F21B66A2A7008B31B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCEB58F11B66A2A7008B31B4 /* Images.xcassets */; };
 		BCEB58F51B66A2A7008B31B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCEB58F31B66A2A7008B31B4 /* LaunchScreen.xib */; };
 		BCEB59011B66A2A7008B31B4 /* MADLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEB59001B66A2A7008B31B4 /* MADLabTests.swift */; };
+		BCF7D83F1B66AF870058B046 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF7D83E1B66AF870058B046 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		BCEB58FA1B66A2A7008B31B4 /* MADLabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MADLabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCEB58FF1B66A2A7008B31B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCEB59001B66A2A7008B31B4 /* MADLabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MADLabTests.swift; sourceTree = "<group>"; };
+		BCF7D83E1B66AF870058B046 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				BCEB58EA1B66A2A7008B31B4 /* AppDelegate.swift */,
 				BCEB58EC1B66A2A7008B31B4 /* ViewController.swift */,
 				BCEB58EE1B66A2A7008B31B4 /* Main.storyboard */,
+				BCF7D83E1B66AF870058B046 /* HomeViewController.swift */,
 				BCEB58F11B66A2A7008B31B4 /* Images.xcassets */,
 				BCEB58F31B66A2A7008B31B4 /* LaunchScreen.xib */,
 				BCEB58E81B66A2A7008B31B4 /* Supporting Files */,
@@ -214,6 +217,7 @@
 			files = (
 				BCEB58ED1B66A2A7008B31B4 /* ViewController.swift in Sources */,
 				BCEB58EB1B66A2A7008B31B4 /* AppDelegate.swift in Sources */,
+				BCF7D83F1B66AF870058B046 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +413,7 @@
 				BCEB59061B66A2A7008B31B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BCEB59071B66A2A7008B31B4 /* Build configuration list for PBXNativeTarget "MADLabTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +422,7 @@
 				BCEB59091B66A2A7008B31B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
