@@ -20,13 +20,13 @@
 		90FEBC7D1B66BAEC00B56652 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90FEBC731B66BAEC00B56652 /* Security.framework */; };
 		90FEBC7E1B66BAEC00B56652 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90FEBC741B66BAEC00B56652 /* StoreKit.framework */; };
 		90FEBC7F1B66BAEC00B56652 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90FEBC751B66BAEC00B56652 /* SystemConfiguration.framework */; };
+		90FEBC821B66CAB500B56652 /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FEBC811B66CAB500B56652 /* SignInController.swift */; };
 		BCEB58EB1B66A2A7008B31B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEB58EA1B66A2A7008B31B4 /* AppDelegate.swift */; };
 		BCEB58ED1B66A2A7008B31B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEB58EC1B66A2A7008B31B4 /* ViewController.swift */; };
 		BCEB58F01B66A2A7008B31B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCEB58EE1B66A2A7008B31B4 /* Main.storyboard */; };
 		BCEB58F21B66A2A7008B31B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCEB58F11B66A2A7008B31B4 /* Images.xcassets */; };
 		BCEB58F51B66A2A7008B31B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCEB58F31B66A2A7008B31B4 /* LaunchScreen.xib */; };
 		BCEB59011B66A2A7008B31B4 /* MADLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEB59001B66A2A7008B31B4 /* MADLabTests.swift */; };
-		BCF7D83F1B66AF870058B046 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF7D83E1B66AF870058B046 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +53,7 @@
 		90FEBC731B66BAEC00B56652 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		90FEBC741B66BAEC00B56652 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		90FEBC751B66BAEC00B56652 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		90FEBC811B66CAB500B56652 /* SignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		BCEB58E51B66A2A7008B31B4 /* MADLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MADLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCEB58E91B66A2A7008B31B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCEB58EA1B66A2A7008B31B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +141,7 @@
 				BCEB58EA1B66A2A7008B31B4 /* AppDelegate.swift */,
 				BCEB58EC1B66A2A7008B31B4 /* ViewController.swift */,
 				90FEBC4A1B66B29E00B56652 /* SignUpController.swift */,
+				90FEBC811B66CAB500B56652 /* SignInController.swift */,
 				BCEB58EE1B66A2A7008B31B4 /* Main.storyboard */,
 				BCF7D83E1B66AF870058B046 /* HomeViewController.swift */,
 				BCEB58F11B66A2A7008B31B4 /* Images.xcassets */,
@@ -275,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCEB58ED1B66A2A7008B31B4 /* ViewController.swift in Sources */,
+				90FEBC821B66CAB500B56652 /* SignInController.swift in Sources */,
 				BCEB58EB1B66A2A7008B31B4 /* AppDelegate.swift in Sources */,
 				90FEBC4B1B66B29E00B56652 /* SignUpController.swift in Sources */,
 			);
