@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import Bolts
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        Parse.enableLocalDatastore()
+        
+        // Initialize Parse.
+        Parse.setApplicationId("TYM8QwWiHHFHBogeIk8N2UahFS5p9fvoLpRjG5LL",
+            clientKey: "va8RtEXEb7MeiF5NxUM9RFsgwv1ETSXNUeJifaHs")
+        
+        
+//        var currentUser = PFUser.currentUser()
+//        if currentUser != nil {
+//            // Do stuff with the user
+//        } else {
+//            // Show the signup or login screen
+//        }
+        
         return true
     }
 
