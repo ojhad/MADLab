@@ -11,6 +11,8 @@ import Parse
 
 @objc protocol DatabaseDelegate{
     optional func boardCreated(success:Bool, error: String)
+    optional func signedUp(success:Bool, error: String)
+    optional func checkedIn(users:[PFUser]?, error: String?)
 }
 
 class Database: NSObject{
@@ -54,7 +56,7 @@ class Database: NSObject{
         user.email = email
         user.password = password
         
-        user["checkedIn"]=true
+        user["checkedIn"]=false
         
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in
@@ -68,6 +70,7 @@ class Database: NSObject{
                 alert.addButtonWithTitle("OK")
                 alert.show()
                 
+                self.delegate?.signedUp!(false, error: errorString!)
             } else {
                 // Hooray! Let them use the app now.
                 
@@ -76,6 +79,27 @@ class Database: NSObject{
                 alert.message = "Welcome!"
                 alert.addButtonWithTitle("OK")
                 alert.show()
+                
+                self.delegate?.signedUp!(true, error: "No error")
+            }
+        }
+    }
+    
+    func getCheckedIn(){
+        var query = PFUser.query()
+        query!.whereKey("checkedIn", equalTo:true)
+        query!.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                // Do something with the found objects
+                if let objects = objects as? [PFUser] {
+                    self.delegate?.checkedIn!(objects, error: nil)
+                }
+            } else {
+                // Log details of the failure
+                println("Error: \(error!) \(error!.userInfo!)")
             }
         }
     }
