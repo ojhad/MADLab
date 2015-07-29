@@ -9,8 +9,22 @@
 import Foundation
 import Parse
 
-class Database{
-    class func logIn(userName: String, password: String){
+@objc protocol DatabaseDelegate{
+    optional func boardCreated(success:Bool, error: String)
+}
+
+class Database: NSObject{
+    
+    class var sharedInstance : Database {
+        struct Static {
+            static let instance : Database = Database()
+        }
+        return Static.instance
+    }
+    
+    var delegate:DatabaseDelegate? = nil
+    
+    func logIn(userName: String, password: String){
         PFUser.logInWithUsernameInBackground(userName, password: password) {
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
@@ -33,7 +47,7 @@ class Database{
         }
     }
     
-    class func signUp(username: String, email: String, password: String) {
+    func signUp(username: String, email: String, password: String) {
         var user = PFUser()
         
         user.username = username
@@ -66,24 +80,22 @@ class Database{
         }
     }
     
-    class func createNewBoard(name: String, description: String, image: UIImage){
-        var user = PFUser.currentUser()
+    func createNewBoard(name: String, description: String, image: UIImage?){
+        
+        //var user = PFUser.currentUser()
         
         var board = PFObject(className: "Board")
         board["name"] = name
         board["description"] = description
         board["numberOfPosts"] = 0
-        board["createdBy"] = user
+        //board["createdBy"] = user
         
         board.saveInBackgroundWithBlock({
             (success: Bool, error: NSError?) -> Void in
             if (success) {
-                
-                
-                
+                self.delegate?.boardCreated!(true, error: "No Error.")
             } else {
-                
-                
+                self.delegate?.boardCreated!(false, error: error!.description)
             }
         })
         

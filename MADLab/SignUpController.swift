@@ -10,7 +10,7 @@ class SignUpController: UIViewController {
     @IBOutlet weak var passwordText: UITextField!
     
     @IBAction func submitButton(sender: UIButton) {
-        Database.signUp(self.usernameText.text, email: self.emailText.text, password: self.passwordText.text)
+        //Database.signUp(self.usernameText.text, email: self.emailText.text, password: self.passwordText.text)
         
         //self.performSegueWithIdentifier("afterSignUp", sender: self)
     }

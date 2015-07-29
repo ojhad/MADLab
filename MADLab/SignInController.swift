@@ -8,7 +8,7 @@ class SignInController: UIViewController {
     @IBOutlet weak var passwordText: UITextField!
     
     @IBAction func signInButton(sender: UIButton) {
-        Database.logIn(self.usernameText.text, password: self.passwordText.text);
+        //Database.logIn(self.usernameText.text, password: self.passwordText.text);
     }
     
     override func viewDidLoad() {
