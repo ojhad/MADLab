@@ -20,6 +20,7 @@ class Database{
                 alert.message = "Welcome!"
                 alert.addButtonWithTitle("OK")
                 alert.show()
+                
             } else {
                 // The login failed. Check error to see why.
                 let errorString = error!.userInfo?["error"] as? String
@@ -34,9 +35,12 @@ class Database{
     
     class func signUp(username: String, email: String, password: String) {
         var user = PFUser()
+        
         user.username = username
         user.email = email
         user.password = password
+        
+        user["checkedIn"]=true
         
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in

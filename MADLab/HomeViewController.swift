@@ -46,6 +46,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         else{
             let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
             
+            
+            
             return cell
         }
         
