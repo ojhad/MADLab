@@ -13,6 +13,7 @@ import Parse
     optional func boardCreated(success:Bool, error: String)
     optional func signedUp(success:Bool, error: String)
     optional func checkedIn(users:[PFUser]?, error: String?)
+    optional func pulledAllBoards(pulledBoards:[PFObject]?, error: String?)
 }
 
 class Database: NSObject{
