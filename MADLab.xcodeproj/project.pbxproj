@@ -22,6 +22,8 @@
 		90FEBC7E1B66BAEC00B56652 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90FEBC741B66BAEC00B56652 /* StoreKit.framework */; };
 		90FEBC7F1B66BAEC00B56652 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90FEBC751B66BAEC00B56652 /* SystemConfiguration.framework */; };
 		90FEBC821B66CAB500B56652 /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FEBC811B66CAB500B56652 /* SignInController.swift */; };
+		BC24894B1B694A0A008BDAFD /* DiscussionBoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC24894A1B694A0A008BDAFD /* DiscussionBoardTableViewController.swift */; };
+		BC24894D1B694A55008BDAFD /* DiscussionBoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC24894C1B694A55008BDAFD /* DiscussionBoardTableViewCell.swift */; };
 		BC8BD3F11B69344E00191CCF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BD3F01B69344E00191CCF /* HomeViewController.swift */; };
 		BC8BD3F31B693B8D00191CCF /* CreateDiscussionBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BD3F21B693B8D00191CCF /* CreateDiscussionBoardViewController.swift */; };
 		BCEB58EB1B66A2A7008B31B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEB58EA1B66A2A7008B31B4 /* AppDelegate.swift */; };
@@ -58,6 +60,8 @@
 		90FEBC741B66BAEC00B56652 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		90FEBC751B66BAEC00B56652 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		90FEBC811B66CAB500B56652 /* SignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
+		BC24894A1B694A0A008BDAFD /* DiscussionBoardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionBoardTableViewController.swift; sourceTree = "<group>"; };
+		BC24894C1B694A55008BDAFD /* DiscussionBoardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionBoardTableViewCell.swift; sourceTree = "<group>"; };
 		BC8BD3F01B69344E00191CCF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BC8BD3F21B693B8D00191CCF /* CreateDiscussionBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDiscussionBoardViewController.swift; sourceTree = "<group>"; };
 		BCEB58E51B66A2A7008B31B4 /* MADLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MADLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +153,8 @@
 				90FEBB051B6935A90005E42A /* Database.swift */,
 				90FEBC811B66CAB500B56652 /* SignInController.swift */,
 				BCEB58EE1B66A2A7008B31B4 /* Main.storyboard */,
+				BC24894C1B694A55008BDAFD /* DiscussionBoardTableViewCell.swift */,
+				BC24894A1B694A0A008BDAFD /* DiscussionBoardTableViewController.swift */,
 				BC8BD3F21B693B8D00191CCF /* CreateDiscussionBoardViewController.swift */,
 				BC8BD3F01B69344E00191CCF /* HomeViewController.swift */,
 				BCEB58F11B66A2A7008B31B4 /* Images.xcassets */,
@@ -284,11 +290,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				90FEBB061B6935A90005E42A /* Database.swift in Sources */,
+				BC24894D1B694A55008BDAFD /* DiscussionBoardTableViewCell.swift in Sources */,
 				BC8BD3F11B69344E00191CCF /* HomeViewController.swift in Sources */,
 				BCEB58ED1B66A2A7008B31B4 /* ViewController.swift in Sources */,
 				90FEBC821B66CAB500B56652 /* SignInController.swift in Sources */,
 				BCEB58EB1B66A2A7008B31B4 /* AppDelegate.swift in Sources */,
 				BC8BD3F31B693B8D00191CCF /* CreateDiscussionBoardViewController.swift in Sources */,
+				BC24894B1B694A0A008BDAFD /* DiscussionBoardTableViewController.swift in Sources */,
 				90FEBC4B1B66B29E00B56652 /* SignUpController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
