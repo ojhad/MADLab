@@ -11,7 +11,10 @@ class SignUpController: UIViewController {
     
     @IBAction func submitButton(sender: UIButton) {
         Database.signUp(self.usernameText.text, email: self.emailText.text, password: self.passwordText.text)
+        
+        //self.performSegueWithIdentifier("afterSignUp", sender: self)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,5 @@ class SignUpController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
 }
