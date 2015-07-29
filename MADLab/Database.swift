@@ -114,6 +114,13 @@ class Database: NSObject{
         board["numberOfPosts"] = 0
         //board["createdBy"] = user
         
+        if image != nil{
+            var imageData: NSData  = UIImagePNGRepresentation(image)
+            var imageFile: PFFile? = PFFile(name: "\(name)Image.png", data: imageData)
+            imageFile?.saveInBackground()
+            board["image"] = imageFile
+        }
+        
         board.saveInBackgroundWithBlock({
             (success: Bool, error: NSError?) -> Void in
             if (success) {
@@ -122,7 +129,22 @@ class Database: NSObject{
                 self.delegate?.boardCreated!(false, error: error!.description)
             }
         })
-        
-        
+    }
+    
+    func getAllBoards(){
+        var query = PFQuery(className: "Board")
+        query.findObjectsInBackgroundWithBlock({
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil{
+                if let objects = objects as? [PFObject] {
+                    self.delegate?.pulledAllBoards!(objects, error: nil)
+                }
+            }
+            else{
+                if let objects = objects as? [PFObject] {
+                    self.delegate?.pulledAllBoards!(objects, error: error?.description)
+                }
+            }
+        })
     }
 }

@@ -240,40 +240,61 @@
         <!--Discussion Board-->
         <scene sceneID="yWn-9Y-TQp">
             <objects>
-                <tableViewController id="W4Z-TF-SKa" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="tZc-d8-jNe">
+                <tableViewController id="W4Z-TF-SKa" customClass="DiscussionBoardTableViewController" customModule="MADLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="tZc-d8-jNe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="board_cell" rowHeight="100" id="Sqk-gJ-cqu">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="board_cell" rowHeight="80" id="Sqk-gJ-cqu" customClass="DiscussionBoardTableViewCell" customModule="MADLab" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sqk-gJ-cqu" id="LzQ-rh-Az7">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OfD-xO-kad">
-                                            <rect key="frame" x="8" y="25" width="50" height="50"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OfD-xO-kad">
+                                            <rect key="frame" x="8" y="15" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="8xe-6g-2rd"/>
+                                                <constraint firstAttribute="width" constant="50" id="C5s-KM-chd"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="board name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnS-dB-ViD">
-                                            <rect key="frame" x="66" y="25" width="245" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="board name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnS-dB-ViD">
+                                            <rect key="frame" x="66" y="15" width="268" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title of last question posted" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRP-Sa-b8s">
-                                            <rect key="frame" x="66" y="54" width="245" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="title of last question posted" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRP-Sa-b8s">
+                                            <rect key="frame" x="66" y="43" width="268" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DY-Xa-0Fh">
-                                            <rect key="frame" x="319" y="8" width="48" height="21"/>
+                                            <rect key="frame" x="342" y="8" width="25" height="12"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="MRP-Sa-b8s" firstAttribute="leading" secondItem="LzQ-rh-Az7" secondAttribute="leadingMargin" constant="58" id="3gv-hU-jxc"/>
+                                        <constraint firstItem="OfD-xO-kad" firstAttribute="leading" secondItem="LzQ-rh-Az7" secondAttribute="leadingMargin" id="4rd-BV-diA"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="gnS-dB-ViD" secondAttribute="trailing" constant="33" id="7J1-wk-WCU"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="MRP-Sa-b8s" secondAttribute="trailing" constant="33" id="Hs8-TO-BIM"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="MRP-Sa-b8s" secondAttribute="bottom" constant="10.5" id="Zd1-q8-jWh"/>
+                                        <constraint firstItem="gnS-dB-ViD" firstAttribute="top" secondItem="LzQ-rh-Az7" secondAttribute="topMargin" constant="7" id="iLD-M3-erh"/>
+                                        <constraint firstItem="OfD-xO-kad" firstAttribute="top" secondItem="LzQ-rh-Az7" secondAttribute="topMargin" constant="7" id="mq3-Kp-X7U"/>
+                                        <constraint firstItem="gnS-dB-ViD" firstAttribute="leading" secondItem="LzQ-rh-Az7" secondAttribute="leadingMargin" constant="58" id="ozw-qh-F9F"/>
+                                        <constraint firstItem="MRP-Sa-b8s" firstAttribute="top" secondItem="gnS-dB-ViD" secondAttribute="bottom" constant="7.5" id="u0b-jO-7MS"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="ivImage" destination="OfD-xO-kad" id="zmb-R9-4sJ"/>
+                                    <outlet property="lblDescription" destination="MRP-Sa-b8s" id="yte-pK-W5u"/>
+                                    <outlet property="lblName" destination="gnS-dB-ViD" id="hxw-pK-tK1"/>
+                                    <outlet property="lblPostCount" destination="5DY-Xa-0Fh" id="Xgy-KD-8ag"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -292,10 +313,44 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="uMF-bB-xhO" kind="show" identifier="show_posts" id="oEd-9y-tUf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="geJ-rP-ZxD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2741.5" y="430.5"/>
+        </scene>
+        <!--Posts-->
+        <scene sceneID="om4-LY-O9d">
+            <objects>
+                <tableViewController id="uMF-bB-xhO" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AYi-3q-hxA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="tCH-6B-Aez">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tCH-6B-Aez" id="uJn-mm-LxU">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="uMF-bB-xhO" id="r7V-r8-gOd"/>
+                            <outlet property="delegate" destination="uMF-bB-xhO" id="gEn-OQ-wd2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Posts" id="0OR-2D-bnI">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="zpT-3b-W7M"/>
+                        <barButtonItem key="rightBarButtonItem" title="New Post" id="3bc-AX-StN"/>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JDc-wD-S0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3399.5" y="560.5"/>
         </scene>
         <!--Create Discussion Board View Controller-->
         <scene sceneID="Ijt-BH-br1">
@@ -316,12 +371,12 @@
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter Discussion Board Description Here." translatesAutoresizingMaskIntoConstraints="NO" id="X07-Qj-jSH">
                                 <rect key="frame" x="16" y="119" width="343" height="166"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.62179507985425397" green="0.79005152555618774" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5I-Ka-IF7">
-                                <rect key="frame" x="232" y="358" width="46" height="30"/>
+                                <rect key="frame" x="313" y="20" width="46" height="30"/>
                                 <state key="normal" title="Create">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -330,7 +385,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9W-hV-7GH">
-                                <rect key="frame" x="139" y="293" width="96" height="30"/>
+                                <rect key="frame" x="139" y="351" width="96" height="30"/>
                                 <state key="normal" title="Upload Image">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -339,7 +394,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbF-r0-CWy">
-                                <rect key="frame" x="92" y="358" width="48" height="30"/>
+                                <rect key="frame" x="16" y="20" width="48" height="30"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -347,11 +402,26 @@
                                     <action selector="btnTappedCancel:" destination="rdp-Qt-rev" eventType="touchUpInside" id="NiW-Yt-ZLo"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="alX-un-IiP">
+                                <rect key="frame" x="162" y="293" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="ktO-6r-VgY"/>
+                                    <constraint firstAttribute="height" constant="50" id="oZo-LS-vjo"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="For best results upload a 50px by 50px image" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypN-PY-DAe">
+                                <rect key="frame" x="58" y="389" width="259" height="21"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                <color key="textColor" red="0.32997197690217395" green="0.32997197690217395" blue="0.32997197690217395" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="btnSelectImage" destination="S9W-hV-7GH" id="PgM-8H-J4L"/>
+                        <outlet property="ivSelectedImage" destination="alX-un-IiP" id="JaW-wW-zCQ"/>
                         <outlet property="tfBoardName" destination="v72-3U-ftf" id="nSr-42-pNi"/>
                         <outlet property="txtvBoardDescription" destination="X07-Qj-jSH" id="iab-lr-GPD"/>
                     </connections>
