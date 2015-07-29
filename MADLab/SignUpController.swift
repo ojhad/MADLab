@@ -10,34 +10,7 @@ class SignUpController: UIViewController {
     @IBOutlet weak var passwordText: UITextField!
     
     @IBAction func submitButton(sender: UIButton) {
-        
-        var user = PFUser()
-        user.username = self.usernameText.text
-        user.email = self.emailText.text
-        user.password = self.passwordText.text
-        
-        user.signUpInBackgroundWithBlock {
-            (succeeded: Bool, error: NSError?) -> Void in
-            if let error = error {
-                let errorString = error.userInfo?["error"] as? String
-                // Show the errorString somewhere and let the user try again.
-                
-                let alert = UIAlertView()
-                alert.title = "Error"
-                alert.message = errorString
-                alert.addButtonWithTitle("OK")
-                alert.show()
-                
-            } else {
-                // Hooray! Let them use the app now.
-                
-                let alert = UIAlertView()
-                alert.title = "Success"
-                alert.message = "Welcome!"
-                alert.addButtonWithTitle("OK")
-                alert.show()
-            }
-        }
+        Database.signUp(self.usernameText.text, email: self.emailText.text, password: self.passwordText.text)
     }
     
     override func viewDidLoad() {
