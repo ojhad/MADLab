@@ -61,4 +61,28 @@ class Database{
             }
         }
     }
+    
+    class func createNewBoard(name: String, description: String, image: UIImage){
+        var user = PFUser.currentUser()
+        
+        var board = PFObject(className: "Board")
+        board["name"] = name
+        board["description"] = description
+        board["numberOfPosts"] = 0
+        board["createdBy"] = user
+        
+        board.saveInBackgroundWithBlock({
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                
+                
+                
+            } else {
+                
+                
+            }
+        })
+        
+        
+    }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LCI-yN-hpb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="phv-ci-CAJ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -254,7 +254,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DY-Xa-0Fh">
-                                            <rect key="frame" x="319" y="25" width="48" height="21"/>
+                                            <rect key="frame" x="319" y="8" width="48" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -271,7 +271,11 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Discussion Board" id="ggu-9y-Eyq">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Sdj-VL-j0m"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fdz-ZK-nhB"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fdz-ZK-nhB">
+                            <connections>
+                                <segue destination="rdp-Qt-rev" kind="showDetail" id="ZAD-tI-cfZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -279,6 +283,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="geJ-rP-ZxD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2741.5" y="430.5"/>
+        </scene>
+        <!--Create Discussion Board View Controller-->
+        <scene sceneID="Ijt-BH-br1">
+            <objects>
+                <viewController id="rdp-Qt-rev" customClass="CreateDiscussionBoardViewController" customModule="MADLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E13-5P-0l4"/>
+                        <viewControllerLayoutGuide type="bottom" id="M0a-7J-rmc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qhe-Ey-q4S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Discussion Board Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v72-3U-ftf">
+                                <rect key="frame" x="16" y="81" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter Discussion Board Description Here." translatesAutoresizingMaskIntoConstraints="NO" id="X07-Qj-jSH">
+                                <rect key="frame" x="16" y="119" width="343" height="166"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5I-Ka-IF7">
+                                <rect key="frame" x="232" y="358" width="46" height="30"/>
+                                <state key="normal" title="Create">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnTappedCreate:" destination="rdp-Qt-rev" eventType="touchUpInside" id="KdZ-V6-uaY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9W-hV-7GH">
+                                <rect key="frame" x="139" y="293" width="96" height="30"/>
+                                <state key="normal" title="Upload Image">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnTappedUploadImage:" destination="rdp-Qt-rev" eventType="touchUpInside" id="yZP-ci-9rh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbF-r0-CWy">
+                                <rect key="frame" x="92" y="358" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnTappedCancel:" destination="rdp-Qt-rev" eventType="touchUpInside" id="NiW-Yt-ZLo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tfBoardName" destination="v72-3U-ftf" id="nSr-42-pNi"/>
+                        <outlet property="txtvBoardDescription" destination="X07-Qj-jSH" id="iab-lr-GPD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bRy-1C-5gJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3179.5" y="-155.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gIy-D5-BNE">
