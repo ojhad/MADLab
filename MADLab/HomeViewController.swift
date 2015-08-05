@@ -17,6 +17,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var checkedIn: Bool!
     
+    @IBAction func logOut(sender: UIBarButtonItem) {
+        PFUser.logOut()
+        
+        performSegueWithIdentifier("logOut", sender: self)
+    }
+    
     @IBOutlet weak var checkInButton: UIBarButtonItem!
     
     @IBAction func checkIn(sender: UIBarButtonItem) {

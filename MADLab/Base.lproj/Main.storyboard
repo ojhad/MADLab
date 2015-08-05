@@ -147,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvs-5A-1av" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="387.5" y="430.5"/>
+            <point key="canvasLocation" x="411.5" y="312.5"/>
         </scene>
         <!--Sign In Controller-->
         <scene sceneID="xx3-09-Q5Y">
@@ -275,7 +275,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Available Staff" id="bhg-Dy-TMX">
                         <barButtonItem key="backBarButtonItem" title="Back" id="vmQ-BP-YZO"/>
-                        <barButtonItem key="leftBarButtonItem" title="About" id="17L-ea-1e0"/>
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="17L-ea-1e0">
+                            <connections>
+                                <action selector="logOut:" destination="QHX-kl-Bm7" id="Sao-5X-qJb"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Check In" id="Azj-aB-Uoz">
                             <connections>
                                 <action selector="checkIn:" destination="QHX-kl-Bm7" id="wF4-uz-CbY"/>
@@ -288,6 +292,7 @@
                         <outlet property="tvCheckedInStaff" destination="X0J-Lo-dWR" id="GGk-Nb-t6c"/>
                         <outlet property="tvMenuOptions" destination="dba-zj-RvS" id="b3j-G2-p5u"/>
                         <segue destination="W4Z-TF-SKa" kind="show" identifier="discussion_board" id="lbU-Iw-eVw"/>
+                        <segue destination="Vn6-4t-ww6" kind="showDetail" identifier="logOut" id="CWU-mV-kI7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCp-F4-W9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
