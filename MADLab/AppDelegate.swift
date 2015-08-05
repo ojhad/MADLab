@@ -25,14 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("Kn0caHZ8cgHZbBQWqLH0hQOyEDtEd2jN0vPfePxU",
             clientKey: "eP7vXeeuw4PBIQxUNJpq5j3m69No9pqrTcCosKqh")
         
-        
-//        var currentUser = PFUser.currentUser()
-//        if currentUser != nil {
-//            // Do stuff with the user
-//        } else {
-//            // Show the signup or login screen
-//        }
-        
         return true
     }
 

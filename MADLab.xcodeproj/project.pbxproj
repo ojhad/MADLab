@@ -32,7 +32,6 @@
 		BC95DD0C1B72838400A065FD /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC95DD0B1B72838400A065FD /* NewPostViewController.swift */; };
 		BCD2950D1B72A70200956847 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD2950C1B72A70200956847 /* PostViewController.swift */; };
 		BCEB58EB1B66A2A7008B31B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEB58EA1B66A2A7008B31B4 /* AppDelegate.swift */; };
-		BCEB58ED1B66A2A7008B31B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEB58EC1B66A2A7008B31B4 /* ViewController.swift */; };
 		BCEB58F01B66A2A7008B31B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCEB58EE1B66A2A7008B31B4 /* Main.storyboard */; };
 		BCEB58F21B66A2A7008B31B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCEB58F11B66A2A7008B31B4 /* Images.xcassets */; };
 		BCEB58F51B66A2A7008B31B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCEB58F31B66A2A7008B31B4 /* LaunchScreen.xib */; };
@@ -77,7 +76,6 @@
 		BCEB58E51B66A2A7008B31B4 /* MADLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MADLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCEB58E91B66A2A7008B31B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCEB58EA1B66A2A7008B31B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BCEB58EC1B66A2A7008B31B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BCEB58EF1B66A2A7008B31B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BCEB58F11B66A2A7008B31B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BCEB58F41B66A2A7008B31B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -116,6 +114,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		901756321B72983900E674C8 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				90FEBC4A1B66B29E00B56652 /* SignUpController.swift */,
+				90FEBC811B66CAB500B56652 /* SignInController.swift */,
+				9017562F1B728F0500E674C8 /* NotSignedIn.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
 		90FEBC801B66C2BC00B56652 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,16 +186,12 @@
 			isa = PBXGroup;
 			children = (
 				BCEB58EA1B66A2A7008B31B4 /* AppDelegate.swift */,
-				BCEB58EC1B66A2A7008B31B4 /* ViewController.swift */,
-				90FEBC4A1B66B29E00B56652 /* SignUpController.swift */,
+				BC8BD3F01B69344E00191CCF /* HomeViewController.swift */,
 				90FEBB051B6935A90005E42A /* Database.swift */,
-				90FEBC811B66CAB500B56652 /* SignInController.swift */,
 				BCEB58EE1B66A2A7008B31B4 /* Main.storyboard */,
 				BCD2950C1B72A70200956847 /* PostViewController.swift */,
 				BC95DD081B727DFB00A065FD /* Post */,
 				BC95DD071B727DEA00A065FD /* Board */,
-				9017562F1B728F0500E674C8 /* NotSignedIn.swift */,
-				BC8BD3F01B69344E00191CCF /* HomeViewController.swift */,
 				BCEB58F11B66A2A7008B31B4 /* Images.xcassets */,
 				BCEB58F31B66A2A7008B31B4 /* LaunchScreen.xib */,
 				BCEB58E81B66A2A7008B31B4 /* Supporting Files */,
@@ -325,7 +329,6 @@
 				BCD2950D1B72A70200956847 /* PostViewController.swift in Sources */,
 				BC24894D1B694A55008BDAFD /* DiscussionBoardTableViewCell.swift in Sources */,
 				BC8BD3F11B69344E00191CCF /* HomeViewController.swift in Sources */,
-				BCEB58ED1B66A2A7008B31B4 /* ViewController.swift in Sources */,
 				BC95DD0C1B72838400A065FD /* NewPostViewController.swift in Sources */,
 				901756301B728F0500E674C8 /* NotSignedIn.swift in Sources */,
 				90FEBC821B66CAB500B56652 /* SignInController.swift in Sources */,

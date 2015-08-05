@@ -107,7 +107,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILE-EC-qr9">
-                                <rect key="frame" x="160" y="441" width="55" height="30"/>
+                                <rect key="frame" x="112" y="404" width="150" height="40"/>
+                                <color key="backgroundColor" red="0.10588236149999999" green="0.57254904510000004" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -116,7 +118,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ga-5f-TX1">
-                                <rect key="frame" x="163" y="237" width="48" height="30"/>
+                                <rect key="frame" x="112" y="314" width="150" height="40"/>
+                                <color key="backgroundColor" red="0.10588236149999999" green="0.57254904510000004" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -124,12 +128,21 @@
                                     <segue destination="LCI-yN-hpb" kind="show" id="uIH-Oo-dxU"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please sign in or create an account!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qnv-w3-pbc">
+                                <rect key="frame" x="50" y="549" width="274" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MADLab" translatesAutoresizingMaskIntoConstraints="NO" id="WyZ-m6-783">
+                                <rect key="frame" x="87" y="59" width="200" height="200"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <segue destination="phv-ci-CAJ" kind="show" identifier="signedIn" id="O3w-I7-8xS"/>
+                        <segue destination="phv-ci-CAJ" kind="show" identifier="alreadysignedIn" id="O3w-I7-8xS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvs-5A-1av" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -664,6 +677,9 @@
             <point key="canvasLocation" x="1804" y="431"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MADLab" width="300" height="300"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="O3w-I7-8xS"/>
     </inferredMetricsTieBreakers>

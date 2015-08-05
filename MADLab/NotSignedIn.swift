@@ -17,7 +17,7 @@ class NotSignedIn: UIViewController{
         var currentUser = PFUser.currentUser()
         if currentUser != nil {
             dispatch_async(dispatch_get_main_queue(), {
-                self.performSegueWithIdentifier("signedIn", sender: self)
+                self.performSegueWithIdentifier("alreadysignedIn", sender: self)
             })
         }
     }
