@@ -35,6 +35,7 @@ class Database: NSObject{
                 alert.message = "Welcome!"
                 alert.addButtonWithTitle("OK")
                 alert.show()
+                self.delegate?.loggedIn!(true, error: "No error")
                 
             } else {
                 // The login failed. Check error to see why.
@@ -44,6 +45,7 @@ class Database: NSObject{
                 alert.message = errorString
                 alert.addButtonWithTitle("OK")
                 alert.show()
+                self.delegate?.loggedIn!(false, error: errorString!)
             }
         }
     }
@@ -55,7 +57,7 @@ class Database: NSObject{
         user.email = email
         user.password = password
         
-        user["checkedIn"]=true
+        user["checkedIn"]=false
         
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in
@@ -69,6 +71,7 @@ class Database: NSObject{
                 alert.addButtonWithTitle("OK")
                 alert.show()
                 
+                self.delegate?.signedUp!(false, error: errorString!)
             } else {
                 // Hooray! Let them use the app now.
                 
@@ -77,6 +80,23 @@ class Database: NSObject{
                 alert.message = "Welcome!"
                 alert.addButtonWithTitle("OK")
                 alert.show()
+                
+                self.delegate?.signedUp!(true, error: "No error")
+            }
+        }
+    }
+    
+    func checkIn(current: PFUser){
+        var query = PFQuery(className:"_User")
+        
+        query.getObjectInBackgroundWithId(current.objectId!) {
+            (user: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                self.delegate?.checkIn!(false, error: error?.description)
+            } else if let user = user {
+                user["checkedIn"] = true
+                user.saveInBackground()
+                self.delegate?.checkIn!(true, error: "No error")
             }
         }
     }

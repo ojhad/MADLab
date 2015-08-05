@@ -7,8 +7,25 @@
 //
 
 import UIKit
+import Parse
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DatabaseDelegate {
+    
+    var users = [PFUser]()
+    
+    var current: PFUser!
+    
+    @IBOutlet weak var checkInButton: UIBarButtonItem!
+    
+    @IBAction func checkIn(sender: UIBarButtonItem) {
+        if self.checkInButton.title == "Check out"{
+            Database.sharedInstance.checkOut(self.current)
+            self.checkInButton.title = "Check In"
+        }
+        else{
+            Database.sharedInstance.checkIn(self.current)
+        }
+    }
     
     @IBOutlet weak var tvMenuOptions: UITableView!
     @IBOutlet weak var tvCheckedInStaff: UITableView!
@@ -23,7 +40,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tvMenuOptions.separatorStyle = UITableViewCellSeparatorStyle.None
         tvMenuOptions.scrollEnabled = false
         
+        tvCheckedInStaff.dataSource = self
+        tvCheckedInStaff.delegate = self
         
+        
+        Database.sharedInstance.delegate = self
+        Database.sharedInstance.getCheckedIn()
+        
+        self.current = PFUser.currentUser()!
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -31,7 +55,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuOptions.count
+        if(tableView == tvMenuOptions){
+            return menuOptions.count
+        }
+        else{
+            return users.count
+        }
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -44,9 +74,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return cell
         }
         else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("checkCell", forIndexPath: indexPath) as! UITableViewCell
             
-            
+            cell.textLabel?.text = users[indexPath.row].username
             
             return cell
         }
@@ -61,19 +91,42 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    func checkedIn(users: [PFUser]?, error: String?){
+        if(error == nil){
+            self.users = users!
+            
+            for user in self.users {
+                if user == self.current{
+                    self.checkInButton.title = "Check out"
+                }
+            }
+            
+            self.tvCheckedInStaff.reloadData()
+        }
+        else{
+            println(error)
+        }
     }
-    */
     
+    func checkIn(success:Bool, error: String?){
+        if success{
+            Database.sharedInstance.getCheckedIn()
+        }
+        else{
+            println("Error: User checking in failed!")
+        }
+    }
+    
+    func checkOut(success:Bool, error: String?){
+        if success{
+            Database.sharedInstance.getCheckedIn()
+        }
+        else{
+            println("Error: User checking out failed!")
+        }
+    }
+    
+    func refresh(sender:AnyObject){
+        Database.sharedInstance.getCheckedIn()
+    }
 }

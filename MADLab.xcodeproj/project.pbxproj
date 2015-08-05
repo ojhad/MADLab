@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		901756301B728F0500E674C8 /* NotSignedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017562F1B728F0500E674C8 /* NotSignedIn.swift */; };
 		90FEBB061B6935A90005E42A /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FEBB051B6935A90005E42A /* Database.swift */; };
 		90FEBC4B1B66B29E00B56652 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FEBC4A1B66B29E00B56652 /* SignUpController.swift */; };
 		90FEBC6A1B66B6EE00B56652 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90FEBC681B66B6EE00B56652 /* Bolts.framework */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9017562F1B728F0500E674C8 /* NotSignedIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotSignedIn.swift; sourceTree = "<group>"; };
 		90FEBB051B6935A90005E42A /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		90FEBC4A1B66B29E00B56652 /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		90FEBC681B66B6EE00B56652 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };

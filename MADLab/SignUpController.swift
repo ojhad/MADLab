@@ -1,7 +1,7 @@
 import UIKit
 import Parse
 
-class SignUpController: UIViewController {
+class SignUpController: UIViewController, DatabaseDelegate {
     
     @IBOutlet weak var usernameText: UITextField!
     
@@ -10,9 +10,21 @@ class SignUpController: UIViewController {
     @IBOutlet weak var passwordText: UITextField!
     
     @IBAction func submitButton(sender: UIButton) {
-        //Database.signUp(self.usernameText.text, email: self.emailText.text, password: self.passwordText.text)
         
         //self.performSegueWithIdentifier("afterSignUp", sender: self)
+        
+        Database.sharedInstance.delegate = self;
+        Database.sharedInstance.signUp(self.usernameText.text, email: self.emailText.text, password: self.passwordText.text)
+    }
+    
+    func signedUp(success: Bool, error: String) {
+        if success{
+            println("User successfully created!")
+            performSegueWithIdentifier("signedUp", sender: self)
+        }
+        else{
+            println("Error: User creation failed!")
+        }
     }
     
     
