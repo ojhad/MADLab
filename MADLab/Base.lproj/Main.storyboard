@@ -249,19 +249,19 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="board name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnS-dB-ViD">
                                             <rect key="frame" x="66" y="15" width="268" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="title of last question posted" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRP-Sa-b8s">
                                             <rect key="frame" x="66" y="43" width="268" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DY-Xa-0Fh">
                                             <rect key="frame" x="342" y="8" width="25" height="12"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -295,7 +295,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="Sdj-VL-j0m"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fdz-ZK-nhB">
                             <connections>
-                                <segue destination="rdp-Qt-rev" kind="showDetail" id="ZAD-tI-cfZ"/>
+                                <segue destination="rdp-Qt-rev" kind="show" id="ZAD-tI-cfZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -312,17 +312,72 @@
         <!--Posts-->
         <scene sceneID="om4-LY-O9d">
             <objects>
-                <tableViewController id="uMF-bB-xhO" sceneMemberID="viewController">
+                <tableViewController id="uMF-bB-xhO" customClass="PostsTableViewController" customModule="MADLab" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AYi-3q-hxA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="tCH-6B-Aez">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="post_cell" rowHeight="80" id="HT0-A3-ZXj" customClass="PostTableViewCell" customModule="MADLab" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tCH-6B-Aez" id="uJn-mm-LxU">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HT0-A3-ZXj" id="iXv-se-wpk">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fnh-Qd-VWQ">
+                                            <rect key="frame" x="8" y="15" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="Y9H-eO-XKJ"/>
+                                                <constraint firstAttribute="height" constant="50" id="k6c-sA-gzo"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="post title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cj5-vL-Z8T">
+                                            <rect key="frame" x="66" y="15" width="268" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogK-5h-IqV">
+                                            <rect key="frame" x="342" y="8" width="25" height="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="posted by" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asX-67-XAA">
+                                            <rect key="frame" x="66" y="36" width="268" height="13"/>
+                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="9"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="date posted" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eD6-yM-D6L">
+                                            <rect key="frame" x="66" y="49" width="268" height="11"/>
+                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="9"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Cj5-vL-Z8T" firstAttribute="leading" secondItem="iXv-se-wpk" secondAttribute="leadingMargin" constant="58" id="ApE-SK-jYK"/>
+                                        <constraint firstItem="eD6-yM-D6L" firstAttribute="top" secondItem="asX-67-XAA" secondAttribute="bottom" id="ByG-KF-ceD"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="eD6-yM-D6L" secondAttribute="bottom" constant="11.5" id="DJv-Qa-50T"/>
+                                        <constraint firstItem="Fnh-Qd-VWQ" firstAttribute="top" secondItem="iXv-se-wpk" secondAttribute="topMargin" constant="7" id="ERo-Ut-Tet"/>
+                                        <constraint firstItem="asX-67-XAA" firstAttribute="top" secondItem="Cj5-vL-Z8T" secondAttribute="bottom" constant="0.5" id="La0-th-EOG"/>
+                                        <constraint firstItem="asX-67-XAA" firstAttribute="top" secondItem="Cj5-vL-Z8T" secondAttribute="bottom" constant="0.5" id="Q0Y-V8-4RA"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Cj5-vL-Z8T" secondAttribute="trailing" constant="33" id="RUI-Fc-A0l"/>
+                                        <constraint firstItem="asX-67-XAA" firstAttribute="leading" secondItem="iXv-se-wpk" secondAttribute="leadingMargin" constant="58" id="Tb2-dB-YY0"/>
+                                        <constraint firstItem="Fnh-Qd-VWQ" firstAttribute="leading" secondItem="iXv-se-wpk" secondAttribute="leadingMargin" id="VE4-Es-eRe"/>
+                                        <constraint firstItem="Cj5-vL-Z8T" firstAttribute="top" secondItem="iXv-se-wpk" secondAttribute="topMargin" constant="7" id="ZeF-Rp-rIh"/>
+                                        <constraint firstItem="eD6-yM-D6L" firstAttribute="leading" secondItem="iXv-se-wpk" secondAttribute="leadingMargin" constant="58" id="qOa-cq-LMQ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="eD6-yM-D6L" secondAttribute="trailing" constant="33" id="rjP-Ck-Npo"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="asX-67-XAA" secondAttribute="trailing" constant="33" id="wUg-nR-HJB"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="ivImage" destination="Fnh-Qd-VWQ" id="T1H-dk-ot0"/>
+                                    <outlet property="lblAuthor" destination="asX-67-XAA" id="xrg-8P-WhK"/>
+                                    <outlet property="lblCommentCount" destination="ogK-5h-IqV" id="jOn-Wk-ahK"/>
+                                    <outlet property="lblDate" destination="eD6-yM-D6L" id="wdS-CD-KNw"/>
+                                    <outlet property="lblTitle" destination="Cj5-vL-Z8T" id="V4q-vQ-w5e"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -332,15 +387,76 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Posts" id="0OR-2D-bnI">
                         <barButtonItem key="backBarButtonItem" title="Back" id="zpT-3b-W7M"/>
-                        <barButtonItem key="rightBarButtonItem" title="New Post" id="3bc-AX-StN"/>
+                        <barButtonItem key="rightBarButtonItem" title="New Post" id="3bc-AX-StN">
+                            <connections>
+                                <segue destination="JXF-kM-e9C" kind="show" identifier="new_post" id="yRK-9H-4C1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JDc-wD-S0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3399.5" y="560.5"/>
+            <point key="canvasLocation" x="3679.5" y="494.5"/>
         </scene>
-        <!--Create Discussion Board View Controller-->
+        <!--New Post-->
+        <scene sceneID="wk9-6i-kfH">
+            <objects>
+                <viewController id="JXF-kM-e9C" customClass="NewPostViewController" customModule="MADLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xVg-Wq-YSe"/>
+                        <viewControllerLayoutGuide type="bottom" id="AA7-oG-dhn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AAt-ux-Gbs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OaA-Y9-699">
+                                <rect key="frame" x="16" y="72" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Post Content" translatesAutoresizingMaskIntoConstraints="NO" id="snz-mf-fgX">
+                                <rect key="frame" x="16" y="110" width="343" height="206"/>
+                                <color key="backgroundColor" red="0.80814534764277635" green="1" blue="0.994637080300526" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XGh-0G-uGy">
+                                <rect key="frame" x="16" y="348" width="343" height="267"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLK-xN-Jv7">
+                                <rect key="frame" x="142" y="319" width="91" height="30"/>
+                                <state key="normal" title="Attach Image">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tappedAttachImage:" destination="JXF-kM-e9C" eventType="touchUpInside" id="BQM-1b-yn2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Post" id="AQh-tM-cgg">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="UzL-Rj-gsz"/>
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="cKS-kY-qb4">
+                            <connections>
+                                <action selector="tappedCreate:" destination="JXF-kM-e9C" id="Qj9-8r-ceN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="ivAttachedImage" destination="XGh-0G-uGy" id="3c3-Kq-xz7"/>
+                        <outlet property="tfTitle" destination="OaA-Y9-699" id="8pA-J1-vOm"/>
+                        <outlet property="txtvContent" destination="snz-mf-fgX" id="b39-Ir-U47"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aGE-0b-bIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4103.5" y="494.5"/>
+        </scene>
+        <!--New Board-->
         <scene sceneID="Ijt-BH-br1">
             <objects>
                 <viewController id="rdp-Qt-rev" customClass="CreateDiscussionBoardViewController" customModule="MADLab" customModuleProvider="target" sceneMemberID="viewController">
@@ -363,15 +479,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5I-Ka-IF7">
-                                <rect key="frame" x="313" y="20" width="46" height="30"/>
-                                <state key="normal" title="Create">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnTappedCreate:" destination="rdp-Qt-rev" eventType="touchUpInside" id="KdZ-V6-uaY"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9W-hV-7GH">
                                 <rect key="frame" x="139" y="351" width="96" height="30"/>
                                 <state key="normal" title="Upload Image">
@@ -379,15 +486,6 @@
                                 </state>
                                 <connections>
                                     <action selector="btnTappedUploadImage:" destination="rdp-Qt-rev" eventType="touchUpInside" id="yZP-ci-9rh"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbF-r0-CWy">
-                                <rect key="frame" x="16" y="20" width="48" height="30"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnTappedCancel:" destination="rdp-Qt-rev" eventType="touchUpInside" id="NiW-Yt-ZLo"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="alX-un-IiP">
@@ -406,6 +504,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="New Board" id="rEH-sr-J6G">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="NF4-lV-eZ4"/>
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="n91-Ey-ajo">
+                            <connections>
+                                <action selector="btnTappedCreate:" destination="rdp-Qt-rev" id="Be7-89-Ree"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="btnSelectImage" destination="S9W-hV-7GH" id="PgM-8H-J4L"/>

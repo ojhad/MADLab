@@ -26,13 +26,11 @@ class CreateDiscussionBoardViewController: UIViewController, DatabaseDelegate, U
     }
 
 
-    @IBAction func btnTappedCreate(sender: UIButton) {
+    @IBAction func btnTappedCreate(sender: AnyObject) {
         Database.sharedInstance.delegate = self;
         Database.sharedInstance.createNewBoard(tfBoardName.text, description: txtvBoardDescription.text, image: ivSelectedImage.image)
     }
-    @IBAction func btnTappedCancel(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
+    
     @IBAction func btnTappedUploadImage(sender: AnyObject) {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
@@ -57,14 +55,17 @@ class CreateDiscussionBoardViewController: UIViewController, DatabaseDelegate, U
     
     //MARK: Database Callbacks
     
-    func boardCreated(success: Bool, error: String) {
-        if success{
-            println("Board successfully created!")
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
-        else{
-            println("Error: Board creation failed!")
+    func createdObject(type: String, success: Bool, error: String) {
+        if type == "Board"{
+            if success{
+                println("Board successfully created!")
+                navigationController?.popViewControllerAnimated(true)
+            }
+            else{
+                println("Error: Board creation failed!")
+            }
         }
     }
+    
     
 }

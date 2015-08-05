@@ -10,8 +10,8 @@ import Foundation
 import Parse
 
 @objc protocol DatabaseDelegate{
-    optional func boardCreated(success:Bool, error: String)
-    optional func pulledAllBoards(pulledBoards:[PFObject]?, error: String?)
+    optional func createdObject(type: String, success:Bool, error: String)
+    optional func pulledAllObjects(type: String, pulledObjects:[PFObject]?, error: String?)
 }
 
 class Database: NSObject{
@@ -81,6 +81,64 @@ class Database: NSObject{
         }
     }
     
+    // MARK: Calls Handling Posts
+    
+    func createNewPost(board: PFObject, title: String, content: String, image: UIImage?){
+        
+        //var user = PFUser.currentUser()
+        
+        var post = PFObject(className: "Post")
+        post["title"] = title
+        post["content"] = content
+        post["board"] = board
+        post["numberOfComments"] = 0
+        //post["createdBy"] = user
+        
+        if image != nil{
+            var imageData: NSData  = UIImagePNGRepresentation(image)
+            var imageFile: PFFile? = PFFile(name: "\(title)Image.png", data: imageData)
+            imageFile?.saveInBackground()
+            post["image"] = imageFile
+        }
+        
+        post.saveInBackgroundWithBlock({
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                self.delegate?.createdObject!("Post", success: true, error: "No Error")
+            } else {
+                self.delegate?.createdObject!("Post", success: false, error: error!.description)
+            }
+        })
+        
+        board.incrementKey("numberOfPosts")
+        board.saveInBackground()
+        
+    }
+    
+    func getAllPosts(board: PFObject){
+        
+        var queryPosts = PFQuery(className: "Post")
+        
+        queryPosts.whereKey("board", equalTo: board)
+        
+        queryPosts.findObjectsInBackgroundWithBlock({
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            if (error == nil) {
+                if let objects = objects as? [PFObject] {
+                    self.delegate?.pulledAllObjects!("Post", pulledObjects: objects, error: nil)
+                }
+            }
+            else {
+                if let objects = objects as? [PFObject] {
+                    self.delegate?.pulledAllObjects!("Post", pulledObjects: objects, error: error?.description)
+                }
+            }
+        })
+
+    }
+    
+    // MARK: Calls Handling Boards
+    
     func createNewBoard(name: String, description: String, image: UIImage?){
         
         //var user = PFUser.currentUser()
@@ -89,6 +147,7 @@ class Database: NSObject{
         board["name"] = name
         board["description"] = description
         board["numberOfPosts"] = 0
+        board["posts"] = []
         //board["createdBy"] = user
         
         if image != nil{
@@ -101,9 +160,9 @@ class Database: NSObject{
         board.saveInBackgroundWithBlock({
             (success: Bool, error: NSError?) -> Void in
             if (success) {
-                self.delegate?.boardCreated!(true, error: "No Error.")
+                self.delegate?.createdObject!("Board", success: true, error: "No Error")
             } else {
-                self.delegate?.boardCreated!(false, error: error!.description)
+                self.delegate?.createdObject!("Board", success: false, error: error!.description)
             }
         })
     }
@@ -114,12 +173,12 @@ class Database: NSObject{
             (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil{
                 if let objects = objects as? [PFObject] {
-                    self.delegate?.pulledAllBoards!(objects, error: nil)
+                    self.delegate?.pulledAllObjects!("Board", pulledObjects: objects, error: nil)
                 }
             }
             else{
                 if let objects = objects as? [PFObject] {
-                    self.delegate?.pulledAllBoards!(objects, error: error?.description)
+                    self.delegate?.pulledAllObjects!("Board", pulledObjects: objects, error: error?.description)
                 }
             }
         })
