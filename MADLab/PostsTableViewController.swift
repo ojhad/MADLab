@@ -85,6 +85,10 @@ class PostsTableViewController: UITableViewController, DatabaseDelegate {
         dateFormatter.dateFormat = "EEEE MMM dd - hh:mm a"
         var dateString: String = dateFormatter.stringFromDate(date!)
         
+        var user: PFUser? = PFUser.currentUser()
+        var name = user?.username
+        cell.lblAuthor.text = "Posted by \(name!)"
+        
         cell.lblDate.text = dateString
         
         if post["image"] == nil{

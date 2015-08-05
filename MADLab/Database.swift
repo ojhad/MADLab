@@ -144,14 +144,14 @@ class Database: NSObject{
     
     func createNewBoard(name: String, description: String, image: UIImage?){
         
-        //var user = PFUser.currentUser()
+        var user = PFUser.currentUser()
         
         var board = PFObject(className: "Board")
         board["name"] = name
         board["description"] = description
         board["numberOfPosts"] = 0
         board["posts"] = []
-        //board["createdBy"] = user
+        board["createdBy"] = user
         
         if image != nil{
             var imageData: NSData  = UIImagePNGRepresentation(image)
