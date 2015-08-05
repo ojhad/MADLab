@@ -12,6 +12,11 @@ import Parse
 @objc protocol DatabaseDelegate{
     optional func createdObject(type: String, success:Bool, error: String)
     optional func pulledAllObjects(type: String, pulledObjects:[PFObject]?, error: String?)
+    optional func signedUp(success:Bool, error: String)
+    optional func loggedIn(success:Bool, error: String)
+    optional func checkedIn(users:[PFUser]?, error: String?)
+    optional func checkIn(success:Bool, error: String?)
+    optional func checkOut(success:Bool, error: String?)
 }
 
 class Database: NSObject{
@@ -97,6 +102,40 @@ class Database: NSObject{
                 user["checkedIn"] = true
                 user.saveInBackground()
                 self.delegate?.checkIn!(true, error: "No error")
+            }
+        }
+    }
+    
+    func checkOut(current: PFUser){
+        var query = PFQuery(className:"_User")
+        
+        query.getObjectInBackgroundWithId(current.objectId!) {
+            (user: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                self.delegate?.checkOut!(false, error: error?.description)
+            } else if let user = user {
+                user["checkedIn"] = false
+                user.saveInBackground()
+                self.delegate?.checkOut!(true, error: "No error")
+            }
+        }
+    }
+    
+    func getCheckedIn(){
+        var query = PFUser.query()
+        query!.whereKey("checkedIn", equalTo:true)
+        query!.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                // Do something with the found objects
+                if let objects = objects as? [PFUser] {
+                    self.delegate?.checkedIn!(objects, error: nil)
+                }
+            } else {
+                // Log details of the failure
+                self.delegate?.checkedIn!(nil, error: error?.description)
             }
         }
     }
