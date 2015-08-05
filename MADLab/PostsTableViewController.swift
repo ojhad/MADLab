@@ -13,7 +13,7 @@ class PostsTableViewController: UITableViewController, DatabaseDelegate {
     
     var board: PFObject?
     var posts: [PFObject]? = nil
-
+    var tappedPost: PFObject?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,6 +113,10 @@ class PostsTableViewController: UITableViewController, DatabaseDelegate {
         return cell
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tappedPost = self.posts![indexPath.row]
+        self.performSegueWithIdentifier("post_detailed", sender: self)
+    }
 
     // MARK: - Navigation
 
@@ -123,6 +127,10 @@ class PostsTableViewController: UITableViewController, DatabaseDelegate {
         if segue.identifier == "new_post"{
             var vc: NewPostViewController = segue.destinationViewController as! NewPostViewController
             vc.board = self.board
+        }
+        if segue.identifier == "post_detailed"{
+            var vc: PostViewController = segue.destinationViewController as! PostViewController
+            vc.post = tappedPost
         }
         
     }
