@@ -12,7 +12,10 @@ import Parse
 @objc protocol DatabaseDelegate{
     optional func boardCreated(success:Bool, error: String)
     optional func signedUp(success:Bool, error: String)
+    optional func loggedIn(success:Bool, error: String)
     optional func checkedIn(users:[PFUser]?, error: String?)
+    optional func checkIn(success:Bool, error: String?)
+    optional func checkOut(success:Bool, error: String?)
     optional func pulledAllBoards(pulledBoards:[PFObject]?, error: String?)
 }
 
@@ -37,6 +40,7 @@ class Database: NSObject{
                 alert.message = "Welcome!"
                 alert.addButtonWithTitle("OK")
                 alert.show()
+                self.delegate?.loggedIn!(true, error: "No error")
                 
             } else {
                 // The login failed. Check error to see why.
@@ -46,6 +50,7 @@ class Database: NSObject{
                 alert.message = errorString
                 alert.addButtonWithTitle("OK")
                 alert.show()
+                self.delegate?.loggedIn!(false, error: errorString!)
             }
         }
     }
@@ -86,6 +91,36 @@ class Database: NSObject{
         }
     }
     
+    func checkIn(current: PFUser){
+        var query = PFQuery(className:"_User")
+        
+        query.getObjectInBackgroundWithId(current.objectId!) {
+            (user: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                self.delegate?.checkIn!(false, error: error?.description)
+            } else if let user = user {
+                user["checkedIn"] = true
+                user.saveInBackground()
+                self.delegate?.checkIn!(true, error: "No error")
+            }
+        }
+    }
+    
+    func checkOut(current: PFUser){
+        var query = PFQuery(className:"_User")
+        
+        query.getObjectInBackgroundWithId(current.objectId!) {
+            (user: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                self.delegate?.checkOut!(false, error: error?.description)
+            } else if let user = user {
+                user["checkedIn"] = false
+                user.saveInBackground()
+                self.delegate?.checkOut!(true, error: "No error")
+            }
+        }
+    }
+    
     func getCheckedIn(){
         var query = PFUser.query()
         query!.whereKey("checkedIn", equalTo:true)
@@ -100,10 +135,11 @@ class Database: NSObject{
                 }
             } else {
                 // Log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
+                self.delegate?.checkedIn!(nil, error: error?.description)
             }
         }
     }
+    
     
     func createNewBoard(name: String, description: String, image: UIImage?){
         

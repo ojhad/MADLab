@@ -20,6 +20,7 @@ class SignUpController: UIViewController, DatabaseDelegate {
     func signedUp(success: Bool, error: String) {
         if success{
             println("User successfully created!")
+            performSegueWithIdentifier("signedUp", sender: self)
         }
         else{
             println("Error: User creation failed!")

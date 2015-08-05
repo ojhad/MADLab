@@ -13,8 +13,18 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var users = [PFUser]()
     
+    var current: PFUser!
+    
+    @IBOutlet weak var checkInButton: UIBarButtonItem!
+    
     @IBAction func checkIn(sender: UIBarButtonItem) {
-        
+        if self.checkInButton.title == "Check out"{
+            Database.sharedInstance.checkOut(self.current)
+            self.checkInButton.title = "Check In"
+        }
+        else{
+            Database.sharedInstance.checkIn(self.current)
+        }
     }
     
     @IBOutlet weak var tvMenuOptions: UITableView!
@@ -33,9 +43,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tvCheckedInStaff.dataSource = self
         tvCheckedInStaff.delegate = self
         
+        
         Database.sharedInstance.delegate = self
         Database.sharedInstance.getCheckedIn()
         
+        self.current = PFUser.currentUser()!
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -79,9 +91,42 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    
     func checkedIn(users: [PFUser]?, error: String?){
-        self.users = users!
-        self.tvCheckedInStaff.reloadData()
+        if(error == nil){
+            self.users = users!
+            
+            for user in self.users {
+                if user == self.current{
+                    self.checkInButton.title = "Check out"
+                }
+            }
+            
+            self.tvCheckedInStaff.reloadData()
+        }
+        else{
+            println(error)
+        }
+    }
+    
+    func checkIn(success:Bool, error: String?){
+        if success{
+            Database.sharedInstance.getCheckedIn()
+        }
+        else{
+            println("Error: User checking in failed!")
+        }
+    }
+    
+    func checkOut(success:Bool, error: String?){
+        if success{
+            Database.sharedInstance.getCheckedIn()
+        }
+        else{
+            println("Error: User checking out failed!")
+        }
+    }
+    
+    func refresh(sender:AnyObject){
+        Database.sharedInstance.getCheckedIn()
     }
 }
