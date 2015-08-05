@@ -15,15 +15,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var current: PFUser!
     
+    var checkedIn: Bool!
+    
     @IBOutlet weak var checkInButton: UIBarButtonItem!
     
     @IBAction func checkIn(sender: UIBarButtonItem) {
-        if self.checkInButton.title == "Check out"{
-            Database.sharedInstance.checkOut(self.current)
-            self.checkInButton.title = "Check In"
+        if self.checkedIn == false {
+            Database.sharedInstance.checkIn(self.current)
         }
         else{
-            Database.sharedInstance.checkIn(self.current)
+            Database.sharedInstance.checkOut(self.current)
         }
     }
     
@@ -45,9 +46,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
         Database.sharedInstance.delegate = self
+        checkedIn = false
+        
         Database.sharedInstance.getCheckedIn()
         
         self.current = PFUser.currentUser()!
+        
+        self.title = self.current.username!
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -93,12 +98,21 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func checkedIn(users: [PFUser]?, error: String?){
         if(error == nil){
+            var found = false
+            
             self.users = users!
             
             for user in self.users {
                 if user == self.current{
                     self.checkInButton.title = "Check out"
+                    self.checkedIn = true
+                    found = true
                 }
+            }
+            
+            if(found == false){
+                self.checkInButton.title = "Check in"
+                self.checkedIn = false
             }
             
             self.tvCheckedInStaff.reloadData()
