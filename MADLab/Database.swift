@@ -81,6 +81,53 @@ class Database: NSObject{
         }
     }
     
+    // MARK: Calls Handling Boards
+    
+    func createNewBoard(name: String, description: String, image: UIImage?){
+        
+        //var user = PFUser.currentUser()
+        
+        var board = PFObject(className: "Board")
+        board["name"] = name
+        board["description"] = description
+        board["numberOfPosts"] = 0
+        board["posts"] = []
+        //board["createdBy"] = user
+        
+        if image != nil{
+            var imageData: NSData  = UIImagePNGRepresentation(image)
+            var imageFile: PFFile? = PFFile(name: "\(name)Image.png", data: imageData)
+            imageFile?.saveInBackground()
+            board["image"] = imageFile
+        }
+        
+        board.saveInBackgroundWithBlock({
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                self.delegate?.createdObject!("Board", success: true, error: "No Error")
+            } else {
+                self.delegate?.createdObject!("Board", success: false, error: error!.description)
+            }
+        })
+    }
+    
+    func getAllBoards(){
+        var query = PFQuery(className: "Board")
+        query.findObjectsInBackgroundWithBlock({
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil{
+                if let objects = objects as? [PFObject] {
+                    self.delegate?.pulledAllObjects!("Board", pulledObjects: objects, error: nil)
+                }
+            }
+            else{
+                if let objects = objects as? [PFObject] {
+                    self.delegate?.pulledAllObjects!("Board", pulledObjects: objects, error: error?.description)
+                }
+            }
+        })
+    }
+    
     // MARK: Calls Handling Posts
     
     func createNewPost(board: PFObject, title: String, content: String, image: UIImage?){
@@ -134,53 +181,6 @@ class Database: NSObject{
                 }
             }
         })
-
-    }
-    
-    // MARK: Calls Handling Boards
-    
-    func createNewBoard(name: String, description: String, image: UIImage?){
         
-        //var user = PFUser.currentUser()
-        
-        var board = PFObject(className: "Board")
-        board["name"] = name
-        board["description"] = description
-        board["numberOfPosts"] = 0
-        board["posts"] = []
-        //board["createdBy"] = user
-        
-        if image != nil{
-            var imageData: NSData  = UIImagePNGRepresentation(image)
-            var imageFile: PFFile? = PFFile(name: "\(name)Image.png", data: imageData)
-            imageFile?.saveInBackground()
-            board["image"] = imageFile
-        }
-        
-        board.saveInBackgroundWithBlock({
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                self.delegate?.createdObject!("Board", success: true, error: "No Error")
-            } else {
-                self.delegate?.createdObject!("Board", success: false, error: error!.description)
-            }
-        })
-    }
-    
-    func getAllBoards(){
-        var query = PFQuery(className: "Board")
-        query.findObjectsInBackgroundWithBlock({
-            (objects: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil{
-                if let objects = objects as? [PFObject] {
-                    self.delegate?.pulledAllObjects!("Board", pulledObjects: objects, error: nil)
-                }
-            }
-            else{
-                if let objects = objects as? [PFObject] {
-                    self.delegate?.pulledAllObjects!("Board", pulledObjects: objects, error: error?.description)
-                }
-            }
-        })
     }
 }
