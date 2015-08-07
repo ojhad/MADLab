@@ -1,29 +1,21 @@
-//
-//  HomeViewController.swift
-//  MADLab
-//
-//  Created by Dilip Ojha on 2015-07-29.
-//  Copyright (c) 2015 madlab. All rights reserved.
-//
-
 import UIKit
 import Parse
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DatabaseDelegate {
-    
     var users = [PFUser]()
-    
     var current: PFUser!
-    
     var checkedIn: Bool!
+    var menuOptions: [String] = ["Discussion Boards", "MADLab Staff", "Currently Checked-In"]
+    
+    @IBOutlet weak var checkInButton: UIBarButtonItem!
+    @IBOutlet weak var tvMenuOptions: UITableView!
+    @IBOutlet weak var tvCheckedInStaff: UITableView!
     
     @IBAction func logOut(sender: UIBarButtonItem) {
         PFUser.logOut()
         
-        performSegueWithIdentifier("logOut", sender: self)
+        self.performSegueWithIdentifier("logOut", sender: self)
     }
-    
-    @IBOutlet weak var checkInButton: UIBarButtonItem!
     
     @IBAction func checkIn(sender: UIBarButtonItem) {
         if self.checkedIn == false {
@@ -34,18 +26,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    @IBOutlet weak var tvMenuOptions: UITableView!
-    @IBOutlet weak var tvCheckedInStaff: UITableView!
-    
-    var menuOptions: [String] = ["Discussion Boards", "MADLab Staff", "Currently Checked-In"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tvMenuOptions.dataSource = self
         tvMenuOptions.delegate = self
-        tvMenuOptions.separatorStyle = UITableViewCellSeparatorStyle.None
-        tvMenuOptions.scrollEnabled = false
         
         tvCheckedInStaff.dataSource = self
         tvCheckedInStaff.delegate = self
@@ -58,7 +43,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.current = PFUser.currentUser()!
         
-        self.title = self.current.username!
+        if self.current["admin"] as! Bool == false {
+            self.checkInButton.enabled = false
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        Database.sharedInstance.delegate = self
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -76,27 +67,24 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         if(tableView == tvMenuOptions){
             let cell = tableView.dequeueReusableCellWithIdentifier("menu_item_cell", forIndexPath: indexPath) as! UITableViewCell
-            
             cell.textLabel?.text = menuOptions[indexPath.row]
             
             return cell
         }
         else{
             let cell = tableView.dequeueReusableCellWithIdentifier("checkCell", forIndexPath: indexPath) as! UITableViewCell
-            
             cell.textLabel?.text = users[indexPath.row].username
             
             return cell
         }
-        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if tableView == tvMenuOptions{
-            if indexPath.row == 0{ // enter discussion boards
+            if indexPath.row == 0{
+                // enter discussion boards
                 self.performSegueWithIdentifier("discussion_board", sender: self)
             }
         }
@@ -128,25 +116,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    func checkIn(success:Bool, error: String?){
+    func checkInOut(success:Bool, error: String?){
         if success{
             Database.sharedInstance.getCheckedIn()
         }
         else{
-            println("Error: User checking in failed!")
+            println(error)
         }
-    }
-    
-    func checkOut(success:Bool, error: String?){
-        if success{
-            Database.sharedInstance.getCheckedIn()
-        }
-        else{
-            println("Error: User checking out failed!")
-        }
-    }
-    
-    func refresh(sender:AnyObject){
-        Database.sharedInstance.getCheckedIn()
     }
 }

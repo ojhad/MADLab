@@ -1,11 +1,3 @@
-//
-//  NotSignedIn.swift
-//  MADLab
-//
-//  Created by Rodolfo Martinez on 2015-08-05.
-//  Copyright (c) 2015 madlab. All rights reserved.
-//
-
 import UIKit
 import Parse
 
