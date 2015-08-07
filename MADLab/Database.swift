@@ -1,11 +1,3 @@
-//
-//  Database.swift
-//  MADLab
-//
-//  Created by Rodolfo Martinez on 2015-07-29.
-//  Copyright (c) 2015 madlab. All rights reserved.
-//
-
 import Foundation
 import Parse
 
@@ -15,12 +7,10 @@ import Parse
     optional func signedUp(success:Bool, error: String)
     optional func loggedIn(success:Bool, error: String)
     optional func checkedIn(users:[PFUser]?, error: String?)
-    optional func checkIn(success:Bool, error: String?)
-    optional func checkOut(success:Bool, error: String?)
+    optional func checkInOut(success:Bool, error: String?)
 }
 
 class Database: NSObject{
-    
     class var sharedInstance : Database {
         struct Static {
             static let instance : Database = Database()
@@ -35,11 +25,6 @@ class Database: NSObject{
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
                 // Do stuff after successful login.
-                let alert = UIAlertView()
-                alert.title = "Success"
-                alert.message = "Welcome!"
-                alert.addButtonWithTitle("OK")
-                alert.show()
                 self.delegate?.loggedIn!(true, error: "No error")
                 
             } else {
@@ -55,7 +40,7 @@ class Database: NSObject{
         }
     }
     
-    func signUp(username: String, email: String, password: String) {
+    func signUp(username: String, email: String, password: String, code: String) {
         var user = PFUser()
         
         user.username = username
@@ -63,6 +48,13 @@ class Database: NSObject{
         user.password = password
         
         user["checkedIn"]=false
+        
+        if code.isEmpty == true{
+            user["admin"] = false
+        }
+        else{
+            user["admin"] = true
+        }
         
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in
@@ -80,12 +72,6 @@ class Database: NSObject{
             } else {
                 // Hooray! Let them use the app now.
                 
-                let alert = UIAlertView()
-                alert.title = "Success"
-                alert.message = "Welcome!"
-                alert.addButtonWithTitle("OK")
-                alert.show()
-                
                 self.delegate?.signedUp!(true, error: "No error")
             }
         }
@@ -97,11 +83,11 @@ class Database: NSObject{
         query.getObjectInBackgroundWithId(current.objectId!) {
             (user: PFObject?, error: NSError?) -> Void in
             if error != nil {
-                self.delegate?.checkIn!(false, error: error?.description)
+                self.delegate?.checkInOut!(false, error: error?.description)
             } else if let user = user {
                 user["checkedIn"] = true
                 user.saveInBackground()
-                self.delegate?.checkIn!(true, error: "No error")
+                self.delegate?.checkInOut!(true, error: "No error")
             }
         }
     }
@@ -112,11 +98,11 @@ class Database: NSObject{
         query.getObjectInBackgroundWithId(current.objectId!) {
             (user: PFObject?, error: NSError?) -> Void in
             if error != nil {
-                self.delegate?.checkOut!(false, error: error?.description)
+                self.delegate?.checkInOut!(false, error: error?.description)
             } else if let user = user {
                 user["checkedIn"] = false
                 user.saveInBackground()
-                self.delegate?.checkOut!(true, error: "No error")
+                self.delegate?.checkInOut!(true, error: "No error")
             }
         }
     }
