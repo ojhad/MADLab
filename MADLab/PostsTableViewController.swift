@@ -129,7 +129,7 @@ class PostsTableViewController: UITableViewController, DatabaseDelegate {
             vc.board = self.board
         }
         if segue.identifier == "post_detailed"{
-            var vc: PostViewController = segue.destinationViewController as! PostViewController
+            var vc: PostTableViewController = segue.destinationViewController as! PostTableViewController
             vc.post = tappedPost
         }
         
